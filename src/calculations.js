@@ -1,40 +1,26 @@
-import calculateNoOfDays from './calculateDays';
-import availableNoOfBeds from './availableBeds';
-import calMoneyLost from './calMoneyLost';
-import calInfectionProjections from './infectionProjections';
+// import calculateNoOfDays from './calculateDays';
+// import availableNoOfBeds from './availableBeds';
+// import calMoneyLost from './calMoneyLost';
+// import calInfectionProjections from './infectionProjections';
 
-const impactCalculator = ({
-  noOfReportedCases,
-  totalHospitalBeds,
-  periodType,
-  timeToElapse,
-  region
-}) => {
-  const noOfDays = calculateNoOfDays(periodType, timeToElapse);
-  const currentlyInfected = noOfReportedCases * 10;
-  const infectionsByRequestedTime = calInfectionProjections(
-    currentlyInfected,
-    noOfDays
-  );
-  const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
+// let value;
+// let period;
 
-  return {
-    currentlyInfected,
-    infectionsByRequestedTime,
-    severeCasesByRequestedTime,
-    hospitalBedsByRequestedTime: availableNoOfBeds(
-      totalHospitalBeds,
-      severeCasesByRequestedTime
-    ),
-    casesForICUByRequestedTime: 0.05 * infectionsByRequestedTime,
-    casesForVentilatorsByRequestedTime: 0.02 * infectionsByRequestedTime,
-    dollarsInFlight: calMoneyLost(
-      infectionsByRequestedTime,
-      region.avgDailyIncomePopulation,
-      region.avgDailyIncomeInUSD,
-      noOfDays
-    )
-  };
-};
+// const noOfDays = calculateNoOfDays(periodType, timeToElapse);
+// const currentlyInfected = noOfReportedCases * 10;
+// const infectionsByRequestedTime = calInfectionProjections(
+//   currentlyInfected,
+//   noOfDays
+// );
+// const impactCurrentlyInfected = reportedCases * 10;
+// // const infectionsByRequestedTime = impactCurrentlyInfected * 2 ** value;
+// const hospitalBedsByRequestedTime = Math.ceil(totalBeds - casesByRequestedTime);
 
-export default impactCalculator;
+// const severeCurrentlyInfected = reportedCases * 50;
+// const severeInfectionsByRequestedTime = severeCurrentlyInfected * 2 ** value;
+// const severeCasesByRequestedTime = Math.ceil(
+//   severeImpactInfectionsByRequestedTime * 0.15
+// );
+// // const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
+
+// export default impact;

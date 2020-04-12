@@ -1,19 +1,10 @@
-// import impactCalculator from './calculations';
-
-import impactCalculator from './calculations';
-
-// const covid19ImpactEstimator = (data) => ({
-//   data,
-//   impact: impactCalculator({ ...data }, 10),
-//   severeImpact: impactCalculator({ ...data }, 50)
-// });
-
-// export default covid19ImpactEstimator;
+import impact from './impact';
+import severeImpact from './severeImpact';
 
 const covid19ImpactEstimator = (data) => ({
   data,
-  impact: impactCalculator({ ...data }, 10),
-  severeImpact: impactCalculator({ ...data }, 50)
+  impact,
+  severeImpact
 });
 
 export default covid19ImpactEstimator;
