@@ -1,9 +1,8 @@
 import data from './data';
 import calInfectionProjections from './infectionProjections';
 import calculateNoOfDays from './calculateDays';
+import calMoneyLost from './calMoneyLost';
 
-let factor;
-let period;
 const noOfDays = calculateNoOfDays(data.periodType, data.timeToElapse);
 const currentlyInfected = data.reportedCases * 10;
 const infectionsByRequestedTime = calInfectionProjections(
@@ -11,13 +10,15 @@ const infectionsByRequestedTime = calInfectionProjections(
   noOfDays
 );
 const casesByRequestedTime = Math.ceil(infectionsByRequestedTime * 0.15);
-const impactInfectionsByRequestedTime = currentlyInfected * 2 ** factor;
 const hospitalBedsByRequestedTime = Math.ceil(
   data.totalHospitalBeds - casesByRequestedTime
 );
-const dollarsInFlight = Math.floor((impactInfectionsByRequestedTime
-  * data.region.avgDailyIncomePopulation
-  * data.region.avgDailyIncomeInUSD) / period);
+const dollarsInFlight = calMoneyLost(
+  infectionsByRequestedTime,
+  data.region.avgDailyIncomePopulation,
+  data.region.avgDailyIncomeInUSD,
+  noOfDays
+);
 
 const impact = {
   currentlyInfected,
