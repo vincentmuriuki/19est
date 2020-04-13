@@ -1,14 +1,13 @@
 import data from './data';
-import calInfectionProjections from './infectionProjections';
+// import calInfectionProjections from './infectionProjections';
 import calculateNoOfDays from './calculateDays';
 import calMoneyLost from './calMoneyLost';
 
 const noOfDays = calculateNoOfDays(data.periodType, data.timeToElapse);
 const currentlyInfected = data.reportedCases * 10;
-const infectionsByRequestedTime = calInfectionProjections(
-  currentlyInfected,
-  noOfDays
-);
+const infectionsByRequestedTime = currentlyInfected * 2 ** Math.trunc(noOfDays / 3);
+
+
 const casesByRequestedTime = Math.ceil(infectionsByRequestedTime * 0.15);
 const hospitalBedsByRequestedTime = Math.ceil(
   data.totalHospitalBeds - casesByRequestedTime

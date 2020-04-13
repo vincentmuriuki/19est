@@ -1,6 +1,9 @@
-const calInfectionProjections = (currentlyInfected, days) => {
-  const projection = currentlyInfected * 2 ** Math.trunc(days / 3);
-  return projection;
-};
+// import data from './data';
+// import calculateNoOfDays from './calculateDays';
 
-export default calInfectionProjections;
+// const calInfectionProjections = (currentlyInfected, days) => {
+//   const projection = currentlyInfected * 2 ** Math.trunc(days / 3);
+//   return projection;
+// };
+
+// export default calInfectionProjections;
